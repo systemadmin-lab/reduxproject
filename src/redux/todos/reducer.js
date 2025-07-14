@@ -51,19 +51,11 @@ const reducer =(state=intialState, action) =>{
                   }
             });
 
+         case CLEARCOMPLETED:
+            return state.filter(todo => !todo.completed )
 
 
-
-
-
-
-
-
-
-
-
-
-            default:
+        default:
                 break;
         
     }
