@@ -1,4 +1,4 @@
-import {ADDED,ALLCOMPLETED,CLEARCOMPLETED,COLORSELECTED,ALLCOMPLETED,TOGGLED,DELETED} from "./actiontype"
+import {ADDED,ALLCOMPLETED,CLEARCOMPLETED,COLORSELECTED,TOGGLED,DELETED} from "./actiontype"
 export const added =(todotext) =>{
   return{
       type:ADDED,
