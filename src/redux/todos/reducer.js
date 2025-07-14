@@ -17,7 +17,10 @@ const reducer =(state=intialState, action) =>{
                    id:nextTodoId(state)
                 }
             ]
-
+        case TOGGLED:
+            return state.map(todo =>{
+                
+            })
 
 
 
