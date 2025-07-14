@@ -1,5 +1,5 @@
 import {COLORCHANGED,STATUSCHANGED} from "./actionType.js"
-import {intialState} from "./intialStatus.js"
+import intialState from "./intialState"
 const reducer =(state=intialState,action)=>{
     switch (action.type) {
         case STATUSCHANGED:
@@ -33,6 +33,7 @@ const reducer =(state=intialState,action)=>{
 
 
         default:
-            break;
+            return state;
     }
 }
+export default reducer

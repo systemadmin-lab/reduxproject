@@ -1,4 +1,4 @@
-import { intialState } from "./intialState"
+import  intialState  from "./intialState"
 import {ADDED,ALLCOMPLETED,CLEARCOMPLETED,COLORSELECTED,TOGGLED,DELETED} from "./actiontype"
 
 const nextTodoId = (todos) =>{
@@ -56,7 +56,8 @@ const reducer =(state=intialState, action) =>{
 
 
         default:
-                break;
+               return state;
         
     }
 }
+export default reducer

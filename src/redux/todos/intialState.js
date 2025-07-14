@@ -1,4 +1,4 @@
-export const intialState =[
+ const intialState =[
     {
     id:1,
     text:"learn react js",
@@ -10,3 +10,4 @@ export const intialState =[
     completed:false
 }
 ]
+export default intialState;
