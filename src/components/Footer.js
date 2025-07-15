@@ -1,7 +1,23 @@
+import { useSelector } from "react-redux";
+import { statusChanged } from "../redux/filters/ACTION.JS";
+const NumberofTodos=(no_of_todos) =>{
+    switch(no_of_todos){
+        case 0:
+            return 'no task ';
+        case 1:
+            return '1 task';
+        default:
+            return `${no_of_todos} tasks`
+    }
+    
+}
+
 export default function Footer() {
+    const todos= useSelector((state)=>state.todos)
+    const todosRemaining =todos.filter(todo => !todo.completed).length
     return (
         <div className="mt-4 flex justify-between text-xs text-gray-500">
-            <p>2 tasks left</p>
+            <p>{NumberofTodos(todosRemaining)}  left</p>
             <ul className="flex space-x-1 items-center text-xs">
                 <li className="cursor-pointer font-bold">All</li>
                 <li>|</li>
