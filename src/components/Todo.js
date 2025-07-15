@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import cancelImage from "../assets/images/cancel.png";
-import { toggoled } from "../redux/todos/actions";
+import { toggoled,colorselected,deleted } from "../redux/todos/actions";
 
 export default function Todo({todo}) {
 //    console.log(todo.todo.text)
@@ -9,6 +9,14 @@ export default function Todo({todo}) {
     const handleStatusChanged = (todoId) =>{
         dispatch(toggoled(todoId));
 
+
+    }
+    const handleColorChanged = (todoId,color) =>{
+        console.log(todoId)
+        dispatch(colorselected(todoId,color))
+    }
+    const handleDelted = (todoId)=>{
+        dispatch(deleted(todoId))
 
     }
     return (
@@ -34,16 +42,23 @@ export default function Todo({todo}) {
                {text}
             </div>
 
-            <div className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer${color==='green'&&'border-green-500 hover:bg-green-500 bg-green-500'}`}></div>
+            <div className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer${color==='green'&&'border-green-500 hover:bg-green-500 bg-green-500'}`}
+            onClick={()=>handleColorChanged(id,'green')}
+            ></div>
 
-            <div className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer${color==='yellow'&&'border-yellow-500 hover:bg-yellow-500 bg-yellow-500'}`}></div>
+            <div className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer${color==='yellow'&&'border-yellow-500 hover:bg-yellow-500 bg-yellow-500'}`}
+            onClick={()=>handleColorChanged(id,'yellow')}
+            ></div>
 
-            <div className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer${color==='red'&&'border-red-500 hover:bg-red-500 bg-red-500'}`}></div>
+            <div className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer${color==='red'&&'border-red-500 hover:bg-red-500 bg-red-500'}`}
+            onClick={()=>handleColorChanged(id,'red')}
+            ></div>
 
             <img
                 src={cancelImage}
                 className="flex-shrink-0 w-4 h-4 ml-2 cursor-pointer"
                 alt="Cancel"
+                onClick={()=>handleDelted(id)}
             />
         </div>
     );
