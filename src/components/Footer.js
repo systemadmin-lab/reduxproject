@@ -16,7 +16,9 @@ const NumberofTodos=(no_of_todos) =>{
 export default function Footer() {
     const dispatch =useDispatch()
     const todos= useSelector((state)=>state.todos)
+    const filters=useSelector((state)=>state.filters)
     const todosRemaining =todos.filter(todo => !todo.completed).length
+    const {status,colors}=filters
 
     const handleStatusChange =(status) =>{
         dispatch(statusChanged(status))
@@ -25,15 +27,16 @@ export default function Footer() {
         <div className="mt-4 flex justify-between text-xs text-gray-500">
             <p>{NumberofTodos(todosRemaining)}  left</p>
             <ul className="flex space-x-1 items-center text-xs">
-                <li className="cursor-pointer font-bold"
+                <li className={`cursor-pointer ${status === 'All' && ' font-bold'}`}
                 onClick={()=>handleStatusChange('All')}
                 >All</li>
                 <li>|</li>
-                <li className="cursor-pointer"
+                <li className={`cursor-pointer ${status === 'Incomplete' && ' font-bold'}`}
                  onClick={()=>handleStatusChange('Incomplete')}
                 >Incomplete</li>
                 <li>|</li>
-                <li className="cursor-pointer" onClick={()=>handleStatusChange('Complete')}>Complete</li>
+                <li className={`cursor-pointer ${status === 'All' && ' font-bold'}`}
+                onClick={()=>handleStatusChange('Complete')}>Complete</li>
                 <li></li>
                 <li></li>
                 <li className="h-3 w-3 border-2 border-green-500 md:hover:bg-green-500 rounded-full cursor-pointer bg-green-500"></li>
